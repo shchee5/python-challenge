@@ -37,30 +37,35 @@ print(f"Total Votes: {Total_Votes} \n---------------------")
 
 #print dictionary entries - candidate name, percent of total vote counts, total vote counts
 for key,value in vote_counter.items():
-    percent_of_total = (value/Total_Votes)*100
-    rounded_percent = round(percent_of_total,4)
-    print(key,":", rounded_percent,"% (",value,")")
-
+    percent_of_total = round((value/Total_Votes)*100,3)
+    #rounded_percent = round(percent_of_total,4)
+    print(key,":", percent_of_total,"% (",value,")")
 print("---------------------")
 
 #print winner by checking which candidate has the highest vote count
 for key,value in vote_counter.items():
     if value == Maximum_Votes:
         print("Winner: ",key)
-
 print("---------------------")
 
 #create a new text file under analysis folder to store results
 txtpath = os.path.join('Analysis','result.txt')
-
-#list(vote_counter.items())[0][1]
 
 #store the respective values to the text file using write function
 txtfile = open(txtpath,'w')
 txtfile.write("Election Results \n---------------------\n")
 txtfile.write(f"Total Votes: {Total_Votes} \n---------------------\n")
 
-txtfile.write("\n---------------------\n")
-txtfile.write("Winner: \n---------------------")
+for key,value in vote_counter.items():
+    percent_of_total = round((value/Total_Votes)*100,3)
+    txtfile.write(f"{key}: {percent_of_total}% ({value})\n")
+
+txtfile.write("---------------------\n")
+
+for key,value in vote_counter.items():
+    if value == Maximum_Votes:
+        txtfile.write(f"Winner: {key}")
+
+txtfile.write("\n---------------------")
 
 txtfile.close()
