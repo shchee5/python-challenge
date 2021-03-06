@@ -11,5 +11,10 @@ The outputs from each python code should be printed in the terminal and the text
 Clone this repository and run the provided python codes in terminal. 
 
 ## Results
+Results from the PyBank challenge:
+![PyBank_Challenge](Images/Financial_Analysis.png)
+
+Results from the PyPoll challenge:
+![PyPoll_Challenge](Images/Election_Results.png)
 
 Written By: Anna Chee
